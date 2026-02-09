@@ -1,3 +1,4 @@
+import { Hero } from "@/components/ui/void-hero";
 import OfferStrip from '@/components/OfferStrip';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
@@ -8,12 +9,33 @@ import AboutSection from '@/components/AboutSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const navigationLinks = [
+    { name: 'HOME', href: '/' },
+    { name: 'WORK', href: '/work' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'CONTACT', href: '/contact' }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <OfferStrip />
-      <Header />
-      <main>
+
+      {/* Mobile Hero (Void 3D) - Visible only on small screens */}
+      <div className="block md:hidden">
+        <Hero
+          title="Sculpted Light and Shadow"
+          description="A dynamic form drifts through luminous voids — edges curve, surfaces gleam, and subtle glow pulses like a heartbeat. Motion and material merge, revealing the art hidden within geometry."
+          links={navigationLinks}
+        />
+      </div>
+
+      {/* Desktop Header & Hero - Hidden on small screens, visible on medium+ */}
+      <div className="hidden md:block">
+        <Header />
         <HeroSection />
+      </div>
+
+      <main>
         <CategorySection />
         <ProductSection />
         <VideoSection />
