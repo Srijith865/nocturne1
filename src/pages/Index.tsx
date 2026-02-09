@@ -1,5 +1,7 @@
+import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "@/components/ui/error-boundary";
-import { Hero } from "@/components/ui/void-hero";
+// import { Hero } from "@/components/ui/void-hero";
+const Hero = lazy(() => import("@/components/ui/void-hero").then(module => ({ default: module.Hero })));
 import { useIsMobile } from "@/hooks/use-mobile";
 import OfferStrip from '@/components/OfferStrip';
 import Header from '@/components/Header';
@@ -28,11 +30,13 @@ const Index = () => {
       {isMobile ? (
         <div className="block md:hidden">
           <ErrorBoundary fallback={<div className="h-screen w-full bg-black text-white flex items-center justify-center">Mobile View Loading...</div>}>
-            <Hero
-              title="Sculpted Light and Shadow"
-              description="A dynamic form drifts through luminous voids — edges curve, surfaces gleam, and subtle glow pulses like a heartbeat. Motion and material merge, revealing the art hidden within geometry."
-              links={navigationLinks}
-            />
+            <Suspense fallback={<div className="h-screen w-full bg-black text-white flex items-center justify-center">Loading 3D Scene...</div>}>
+              <Hero
+                title="Sculpted Light and Shadow"
+                description="A dynamic form drifts through luminous voids — edges curve, surfaces gleam, and subtle glow pulses like a heartbeat. Motion and material merge, revealing the art hidden within geometry."
+                links={navigationLinks}
+              />
+            </Suspense>
           </ErrorBoundary>
         </div>
       ) : (

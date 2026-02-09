@@ -3,10 +3,10 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Geometry, Base, Subtraction } from '@react-three/csg'
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { Bloom, N8AO, SMAA, EffectComposer } from '@react-three/postprocessing'
+// import { Bloom, N8AO, SMAA, EffectComposer } from '@react-three/postprocessing'
 import { useRef } from "react";
 import { Mesh } from "three";
-import { KernelSize } from "postprocessing";
+// import { KernelSize } from "postprocessing";
 
 function Shape() {
     const meshRef = useRef<Mesh>(null);
@@ -110,7 +110,7 @@ function Scene() {
         >
             <Environment />
             <Shape />
-            <EffectComposer multisampling={0}>
+            {/* <EffectComposer multisampling={0}>
                 <N8AO halfRes color="black" aoRadius={2} intensity={1} aoSamples={6} denoiseSamples={4} />
                 <Bloom
                     kernelSize={3}
@@ -125,7 +125,7 @@ function Scene() {
                     intensity={0.5}
                 />
                 <SMAA />
-            </EffectComposer>
+            </EffectComposer> */}
         </Canvas>
     );
 }
