@@ -29,7 +29,7 @@ const Index = () => {
       {/* Hero Section with Conditional Rendering */}
       {isMobile ? (
         <div className="block md:hidden">
-          <ErrorBoundary fallback={<div className="h-screen w-full bg-black text-white flex items-center justify-center">Mobile View Loading...</div>}>
+          <ErrorBoundary>
             <Suspense fallback={<div className="h-screen w-full bg-black text-white flex items-center justify-center">Loading 3D Scene...</div>}>
               <Hero
                 title="Sculpted Light and Shadow"

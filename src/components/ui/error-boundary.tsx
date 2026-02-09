@@ -7,6 +7,7 @@ interface Props {
 
 interface State {
     hasError: boolean;
+    error?: Error;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -14,8 +15,8 @@ export class ErrorBoundary extends Component<Props, State> {
         hasError: false
     };
 
-    public static getDerivedStateFromError(_: Error): State {
-        return { hasError: true };
+    public static getDerivedStateFromError(error: Error): State {
+        return { hasError: true, error };
     }
 
     public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -24,7 +25,14 @@ export class ErrorBoundary extends Component<Props, State> {
 
     public render() {
         if (this.state.hasError) {
-            return this.props.fallback || <div className="p-4 text-red-500">Something went wrong with the 3D view.</div>;
+            return this.props.fallback || (
+                <div className="h-screen w-full bg-black text-red-500 flex flex-col items-center justify-center p-4">
+                    <p className="font-bold mb-2">3D Component Error:</p>
+                    <pre className="text-xs max-w-full overflow-auto bg-gray-900 p-2 rounded border border-red-900">
+                        {this.state.error?.message || "Unknown error"}
+                    </pre>
+                </div>
+            );
         }
 
         return this.props.children;
