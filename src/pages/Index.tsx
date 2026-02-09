@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "@/components/ui/error-boundary";
 import { Hero } from "@/components/ui/void-hero";
 import OfferStrip from '@/components/OfferStrip';
 import Header from '@/components/Header';
@@ -22,11 +23,13 @@ const Index = () => {
 
       {/* Mobile Hero (Void 3D) - Visible only on small screens */}
       <div className="block md:hidden">
-        <Hero
-          title="Sculpted Light and Shadow"
-          description="A dynamic form drifts through luminous voids — edges curve, surfaces gleam, and subtle glow pulses like a heartbeat. Motion and material merge, revealing the art hidden within geometry."
-          links={navigationLinks}
-        />
+        <ErrorBoundary fallback={<div className="h-screen w-full bg-black text-white flex items-center justify-center">Mobile View Loading...</div>}>
+          <Hero
+            title="Sculpted Light and Shadow"
+            description="A dynamic form drifts through luminous voids — edges curve, surfaces gleam, and subtle glow pulses like a heartbeat. Motion and material merge, revealing the art hidden within geometry."
+            links={navigationLinks}
+          />
+        </ErrorBoundary>
       </div>
 
       {/* Desktop Header & Hero - Hidden on small screens, visible on medium+ */}
