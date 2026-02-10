@@ -9,7 +9,7 @@ const VideoSection = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative aspect-video bg-card overflow-hidden"
+          className="relative aspect-[21/9] bg-card overflow-hidden"
         >
           <video
             className="w-full h-full object-cover pointer-events-none select-none"
