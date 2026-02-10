@@ -12,10 +12,16 @@ const VideoSection = () => {
           className="relative aspect-video bg-card overflow-hidden"
         >
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover pointer-events-none select-none"
             src="/critical-darkness.mp4"
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
+            controls={false}
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate noremoteplayback"
+            onContextMenu={(e) => e.preventDefault()}
           >
             Your browser does not support the video tag.
           </video>
