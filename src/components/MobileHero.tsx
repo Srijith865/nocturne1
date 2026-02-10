@@ -1,75 +1,122 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, ShoppingBag, Menu } from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useCart } from "@/contexts/CartContext";
+import goatHero from "@/assets/goat-hero-mobile.png";
 
 export const MobileHero = () => {
-    return (
-        <div className="relative h-svh w-full bg-[#0A0A0A] overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=1988&auto=format&fit=crop"
-                    alt="Fashion Goat Placeholder"
-                    className="w-full h-full object-cover opacity-60 mix-blend-overlay"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/40" />
-            </div>
+  const { totalItems } = useCart();
 
-            {/* Content Container */}
-            <div className="relative z-10 h-full flex flex-col justify-between px-6 py-12 md:px-12">
-
-                {/* Header / Nav Placeholder (Visual only for mobile hero) */}
-                <div className="flex justify-between items-center">
-                    <div className="text-white font-bold text-xl tracking-tighter">[ O ]</div>
-                    {/* Menu Icon Placeholder */}
-                    <div className="space-y-1.5 cursor-pointer">
-                        <div className="w-6 h-0.5 bg-white"></div>
-                        <div className="w-4 h-0.5 bg-white ml-auto"></div>
-                    </div>
-                </div>
-
-                {/* Main Content */}
-                <div className="mt-auto mb-12 space-y-6">
-                    {/* Social Proof / Tag */}
-                    <div className="flex items-center gap-3">
-                        <div className="flex -space-x-2">
-                            <div className="w-6 h-6 rounded-full bg-gray-500 border border-[#0A0A0A]" />
-                            <div className="w-6 h-6 rounded-full bg-gray-400 border border-[#0A0A0A]" />
-                            <div className="w-6 h-6 rounded-full bg-gray-300 border border-[#0A0A0A]" />
-                        </div>
-                        <p className="text-xs text-gray-400 font-mono"><span className="text-white">&lt;1,000</span> users have joined</p>
-                    </div>
-
-                    {/* Headline */}
-                    <h1 className="text-5xl font-bold leading-[0.9] text-white tracking-tighter font-oswald uppercase">
-                        Discover Bold,<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Futuristic</span><br />
-                        Style
-                    </h1>
-
-                    {/* Subtext */}
-                    <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                        Enter a realm where fashion fuses with innovation. Our vision combines art, technology, and individuality.
-                    </p>
-
-                    {/* Email Input */}
-                    <div className="flex flex-col gap-3 mt-4">
-                        <div className="relative">
-                            <input
-                                type="email"
-                                placeholder="Enter Email ID"
-                                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-white/30 transition-colors"
-                            />
-                        </div>
-                        <button className="w-full bg-white text-black font-semibold rounded-lg px-4 py-3 text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
-                            Join Waitlist <ArrowRight className="w-4 h-4" />
-                        </button>
-                    </div>
-
-                    {/* Footer / Number */}
-                    <div className="pt-4">
-                        <p className="text-[10px] text-gray-600 font-mono tracking-widest uppercase">01. THE GOAT</p>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="relative min-h-svh w-full bg-background overflow-hidden">
+      {/* Goat Image - positioned to the right */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute right-[-15%] top-[5%] w-[85%] h-[90%]">
+          <img
+            src={goatHero}
+            alt="NOCTURNE - The GOAT"
+            className="w-full h-full object-cover object-top"
+          />
+          {/* Gradient overlays for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
         </div>
-    );
+      </div>
+
+      {/* Subtle gothic texture */}
+      <div className="absolute inset-0 gothic-skull-bg z-[1]" />
+
+      {/* Header */}
+      <div className="relative z-10 flex justify-between items-center px-5 pt-5">
+        <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
+          NOCTURNE
+        </Link>
+        <div className="flex items-center gap-3">
+          <Link to="/cart" className="p-2 relative" aria-label="Cart">
+            <ShoppingBag className="w-5 h-5 text-foreground" />
+            {totalItems > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-foreground text-background text-[10px] font-bold flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+          <button className="p-2" aria-label="Menu">
+            <Menu className="w-5 h-5 text-foreground" />
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col justify-end h-[calc(100svh-60px)] px-6 pb-10">
+        {/* Gothic ornament */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-4"
+        >
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <span className="text-[10px] tracking-[0.3em] font-mono uppercase">Est. MMXXIV</span>
+            <div className="w-8 h-px bg-muted-foreground/30" />
+            <span className="text-[10px] tracking-[0.3em] font-mono uppercase">Gothic Streetwear</span>
+          </div>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="text-[3.2rem] font-bold leading-[0.9] text-foreground tracking-tighter font-display uppercase mb-4"
+        >
+          Discover<br />
+          Bold,{" "}
+          <span className="text-muted-foreground">Dark</span><br />
+          Style
+        </motion.h1>
+
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="text-muted-foreground text-sm leading-relaxed max-w-[280px] mb-6"
+        >
+          Where gothic luxury meets streetwear. Embrace the darkness with NOCTURNE's curated collections.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="flex gap-3 mb-8"
+        >
+          <Link
+            to="/shop"
+            className="bg-foreground text-background font-display text-sm font-semibold tracking-wider uppercase px-6 py-3.5 flex items-center gap-2 btn-touch transition-opacity hover:opacity-90"
+          >
+            Shop Now <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            to="/shop"
+            className="border border-border text-foreground font-display text-sm font-semibold tracking-wider uppercase px-6 py-3.5 btn-touch transition-colors hover:bg-secondary"
+          >
+            Explore
+          </Link>
+        </motion.div>
+
+        {/* Footer tag */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+        >
+          <p className="text-[10px] text-muted-foreground font-mono tracking-[0.3em] uppercase">
+            01 — The GOAT Collection
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  );
 };
