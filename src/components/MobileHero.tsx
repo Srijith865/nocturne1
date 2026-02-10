@@ -11,11 +11,11 @@ export const MobileHero = () => {
     <div className="relative min-h-svh w-full bg-background overflow-hidden">
       {/* Goat Image - positioned to the right */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute right-[-15%] top-[5%] w-[85%] h-[90%]">
+        <div className="absolute right-0 top-[8%] w-[65%] h-auto flex items-start justify-end pr-2">
           <img
             src={goatHero}
             alt="NOCTURNE - The GOAT"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-auto object-contain"
           />
           {/* Gradient overlays for text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
