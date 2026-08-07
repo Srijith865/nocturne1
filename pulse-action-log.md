@@ -1,5 +1,6 @@
-# Action Log: Authentication Flow Pivot
+# Strategic Decision Log
 
-- **Timestamp:** Autonomous Execution
-- **Decision:** Major strategic pivot regarding the new authentication flow.
-- **Status:** Logged and pending engineering review.
+## Authentication Flow Pivot
+- **Status:** Logged
+- **Details:** Major strategic pivot initiated for the new authentication flow.
+- **Timestamp:** Automated entry via Pulse OS.
