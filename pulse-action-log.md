@@ -1,6 +1,5 @@
-# Strategic Decision Log
+# Action Log
 
-## Authentication Flow Pivot
-- **Status:** Logged
-- **Details:** Major strategic pivot initiated for the new authentication flow.
-- **Timestamp:** Automated entry via Pulse OS.
+## Strategic Pivot: Authentication Flow
+- Status: Logged
+- Details: Major architectural updates initiated for the new authentication framework.
