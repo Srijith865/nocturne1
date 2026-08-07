@@ -1,5 +1,7 @@
-# Strategic Decision Log
+# Action Log - Strategic Pivot
 
-## Pivot: New Authentication Flow
-- **Status:** Approved & Logged
-- **Details:** Updating authentication flow architecture to enhance security and user onboarding experience.
+## Decision
+Logged major strategic pivot regarding the new authentication flow.
+
+## Timestamp
+Execution authorized by Pulse OS.
