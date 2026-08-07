@@ -1,4 +1,1 @@
-# Action Log
-
-## Strategic Pivot: Authentication Flow
-Logged major updates to the authentication architecture to align with updated security and user experience requirements.
+Applied strategic decision: Targeted Tier-1 Dual-Sourcing & Inventory Buffer to balance capital outlay and supply chain resilience over the next 90 days.
