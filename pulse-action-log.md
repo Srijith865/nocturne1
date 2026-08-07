@@ -1,5 +1,4 @@
 # Action Log
 
 ## Strategic Pivot: Authentication Flow
-- Status: Logged
-- Details: Major architectural updates initiated for the new authentication framework.
+Logged major updates to the authentication architecture to align with updated security and user experience requirements.
